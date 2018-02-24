@@ -1,0 +1,66 @@
+{
+    "description": "USG FW pattern",
+    "processors": [
+        {
+            "grok": {
+                "field": "message",
+                "patterns": [
+                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} TOS=%{WORD:usg.fw.tos} PREC=%{WORD:usg.fw.prec} TTL=%{INT:usg.fw.ttl} ID=%{INT:usg.fw.id} DF PROTO=%{WORD:usg.fw.proto} SPT=%{INT:usg.fw.src_port} DPT=%{INT:usg.fw.dest_port} WINDOW=%{INT:usg.fw.window} RES=%{WORD:usg.fw.res}",
+                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} TOS=%{WORD:usg.fw.tos} PREC=%{WORD:usg.fw.prec} TTL=%{INT:usg.fw.ttl} ID=%{INT:usg.fw.id} PROTO=%{WORD:usg.fw.proto} SPT=%{INT:usg.fw.src_port} DPT=%{INT:usg.fw.dest_port} WINDOW=%{INT:usg.fw.window} RES=%{WORD:usg.fw.res}",
+                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} TOS=%{WORD:usg.fw.tos} PREC=%{WORD:usg.fw.prec} TTL=%{INT:usg.fw.ttl} ID=%{INT:usg.fw.id} DF PROTO=%{WORD:usg.fw.proto}",
+                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} TOS=%{WORD:usg.fw.tos} PREC=%{WORD:usg.fw.prec} TTL=%{INT:usg.fw.ttl} ID=%{INT:usg.fw.id} PROTO=%{WORD:usg.fw.proto}",
+                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} .* FLOWLBL=%{INT:usg.fw.flow_label} PROTO=%{WORD:usg.fw.proto} SPT=%{INT:usg.fw.src_port} DPT=%{INT:usg.fw.dst_port}",
+                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} .* PROTO=%{WORD:usg.fw.proto} SPT=%{INT:usg.fw.src_port} DPT=%{INT:usg.fw.dst_port} LEN=%{INT:usg.fw.len}",
+                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} .* PROTO=%{WORD:usg.fw.proto} TYPE=%{INT:usg.fw.type} CODE=%{INT:usg.fw.code}",
+                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: %{GREEDYDATA:usg.fw.other}"
+                ],
+                "ignore_missing": true
+            }
+        },
+        {
+            "rename": {
+                "field": "@timestamp",
+                "target_field": "beats_read_timestamp"
+            }
+        },
+        {
+            "date": {
+                "field": "usg.fw.date",
+                "target_field": "@timestamp",
+                "formats": [
+                    "MMM  d HH:mm:ss",
+                    "MMM dd HH:mm:ss"
+                ],
+                "timezone": "America/Los_Angeles",
+                "ignore_failure": true
+            }
+        },
+        {
+            "remove": {
+                "field": "usg.fw.date"
+            }
+        },
+        {
+            "geoip": {
+                "field": "usg.fw.src_ip",
+                "target_field": "usg.fw.src_ip_geoip",
+                "ignore_failure": true
+            }
+        },
+        {
+            "geoip": {
+                "field": "usg.fw.dst_ip",
+                "target_field": "usg.fw.dst_ip_geoip",
+                "ignore_failure": true
+            }
+        }
+    ],
+    "on_failure": [
+        {
+            "set": {
+                "field": "error.message",
+                "value": "{{ _ingest.on_failure_message }}"
+            }
+        }
+    ]
+}

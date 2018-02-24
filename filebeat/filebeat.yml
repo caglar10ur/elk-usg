@@ -1,0 +1,9 @@
+filebeat.config:
+    modules:
+        enabled: true
+        path: /home/admin/elk-usg/filebeat/modules.d/*.yml
+
+output.elasticsearch:
+    enabled: true
+    hosts:
+        - snow.skynet:9200

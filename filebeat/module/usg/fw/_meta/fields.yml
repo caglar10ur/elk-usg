@@ -1,0 +1,121 @@
+- name: fw
+  type: group
+  description: "USG FW logs"
+  fields:
+    - name: host
+      type: keyword
+      description: '...'
+    - name: ruleset
+      type: keyword
+      description: '...'
+    - name: in
+      type: keyword
+      description: '...'
+    - name: out
+      type: keyword
+      description: '...'
+    - name: mac
+      type: keyword
+      description: '...'
+    - name: src_ip
+      description: '...'
+      type: ip
+    - name: dst_ip
+      description: '...'
+      type: ip
+    - name: len
+      type: keyword
+      description: '...'
+    - name: proto
+      type: keyword
+      description: '...'
+    - name: type
+      type: keyword
+      description: '...'
+    - name: code
+      type: keyword
+      description: '...'
+    - name: tos
+      type: keyword
+      description: '...'
+    - name: prec
+      type: keyword
+      description: '...'
+    - name: ttl
+      type: integer
+      description: '...'
+    - name: id
+      type: keyword
+      description: '...'
+    - name: src_port
+      type: integer
+      description: '...'
+    - name: dest_port
+      type: integer
+      description: '...'
+    - name: window
+      type: keyword
+      description: '...'
+    - name: res
+      type: keyword
+      description: '...'
+    - name: flow_label
+      type: keyword
+      description: '...'
+    - name: facility
+      type: keyword
+      description: '...'
+    - name: src_ip_geoip
+      type: group
+      description: >
+        Contains GeoIP information gathered based on the `ip`
+        field. Only present if the GeoIP Elasticsearch plugin is available and
+        used.
+      fields:
+        - name: continent_name
+          type: keyword
+          description: >
+            The name of the continent.
+        - name: city_name
+          type: keyword
+          description: >
+            The name of the city.
+        - name: region_name
+          type: keyword
+          description: >
+            The name of the region.
+        - name: country_iso_code
+          type: keyword
+          description: >
+            Country ISO code.
+        - name: location
+          type: geo_point
+          description: >
+            The longitude and latitude.
+    - name: dst_ip_geoip
+      type: group
+      description: >
+        Contains GeoIP information gathered based on the `ip`
+        field. Only present if the GeoIP Elasticsearch plugin is available and
+        used.
+      fields:
+        - name: continent_name
+          type: keyword
+          description: >
+            The name of the continent.
+        - name: city_name
+          type: keyword
+          description: >
+            The name of the city.
+        - name: region_name
+          type: keyword
+          description: >
+            The name of the region.
+        - name: country_iso_code
+          type: keyword
+          description: >
+            Country ISO code.
+        - name: location
+          type: geo_point
+          description: >
+            The longitude and latitude.

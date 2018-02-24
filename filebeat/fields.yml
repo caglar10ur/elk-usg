@@ -1,0 +1,195 @@
+- key: beat
+  title: Beat
+  description: >
+    Contains common beat fields available in all event types.
+  fields:
+
+    - name: beat.name
+      description: >
+        The name of the Beat sending the log messages. If the Beat name is
+        set in the configuration file, then that value is used. If it is not
+        set, the hostname is used. To set the Beat name, use the `name`
+        option in the configuration file.
+    - name: beat.hostname
+      description: >
+        The hostname as returned by the operating system on which the Beat is
+        running.
+    - name: beat.timezone
+      description: >
+        The timezone as returned by the operating system on which the Beat is
+        running.
+    - name: beat.version
+      description: >
+        The version of the beat that generated this event.
+
+    - name: "@timestamp"
+      type: date
+      required: true
+      format: date
+      example: August 26th 2016, 12:35:53.332
+      description: >
+        The timestamp when the event log record was generated.
+
+    - name: tags
+      description: >
+        Arbitrary tags that can be set per Beat and per transaction
+        type.
+
+    - name: fields
+      type: object
+      object_type: keyword
+      description: >
+        Contains user configurable fields.
+
+    - name: error
+      type: group
+      description: >
+        Error fields containing additional info in case of errors.
+      fields:
+        - name: message
+          type: text
+          description: >
+            Error message.
+        - name: code
+          type: long
+          description: >
+            Error code.
+        - name: type
+          type: keyword
+          description: >
+            Error type.
+
+- key: usg
+  title: "USG"
+  description: >
+      Module for parsing USG log files.
+  short_config: true
+  fields:
+      - name: usg
+        type: group
+        description: >
+            Fields from the usg log files.
+        fields:
+            - name: fw
+              type: group
+              description: >
+                  "USG FW logs"
+              fields:
+                  - name: host
+                    type: keyword
+                    description: '...'
+                  - name: ruleset
+                    type: keyword
+                    description: '...'
+                  - name: in
+                    type: keyword
+                    description: '...'
+                  - name: out
+                    type: keyword
+                    description: '...'
+                  - name: mac
+                    type: keyword
+                    description: '...'
+                  - name: src_ip
+                    description: '...'
+                    type: ip
+                  - name: dst_ip
+                    description: '...'
+                    type: ip
+                  - name: len
+                    type: keyword
+                    description: '...'
+                  - name: proto
+                    type: keyword
+                    description: '...'
+                  - name: type
+                    type: keyword
+                    description: '...'
+                  - name: code
+                    type: keyword
+                    description: '...'
+                  - name: tos
+                    type: keyword
+                    description: '...'
+                  - name: prec
+                    type: keyword
+                    description: '...'
+                  - name: ttl
+                    type: integer
+                    description: '...'
+                  - name: id
+                    type: keyword
+                    description: '...'
+                  - name: src_port
+                    type: integer
+                    description: '...'
+                  - name: dest_port
+                    type: integer
+                    description: '...'
+                  - name: window
+                    type: keyword
+                    description: '...'
+                  - name: res
+                    type: keyword
+                    description: '...'
+                  - name: flow_label
+                    type: keyword
+                    description: '...'
+                  - name: facility
+                    type: keyword
+                    description: '...'
+                  - name: src_ip_geoip
+                    type: group
+                    description: >
+                        Contains GeoIP information gathered based on the `ip`
+                        field. Only present if the GeoIP Elasticsearch plugin is available and
+                        used.
+                    fields:
+                        - name: continent_name
+                          type: keyword
+                          description: >
+                              The name of the continent.
+                        - name: city_name
+                          type: keyword
+                          description: >
+                              The name of the city.
+                        - name: region_name
+                          type: keyword
+                          description: >
+                              The name of the region.
+                        - name: country_iso_code
+                          type: keyword
+                          description: >
+                              Country ISO code.
+                        - name: location
+                          type: geo_point
+                          description: >
+                              The longitude and latitude.
+                  - name: dst_ip_geoip
+                    type: group
+                    description: >
+                        Contains GeoIP information gathered based on the `ip`
+                        field. Only present if the GeoIP Elasticsearch plugin is available and
+                        used.
+                    fields:
+                        - name: continent_name
+                          type: keyword
+                          description: >
+                              The name of the continent.
+                        - name: city_name
+                          type: keyword
+                          description: >
+                              The name of the city.
+                        - name: region_name
+                          type: keyword
+                          description: >
+                              The name of the region.
+                        - name: country_iso_code
+                          type: keyword
+                          description: >
+                              Country ISO code.
+                        - name: location
+                          type: geo_point
+                          description: >
+                              The longitude and latitude.
+

@@ -1,0 +1,11 @@
+- key: usg
+  title: "USG"
+  description: >
+    Module for parsing usg log files.
+  short_config: true
+  fields:
+    - name: usg
+      type: group
+      description: >
+        Fields from the usg log files.
+      fields:
