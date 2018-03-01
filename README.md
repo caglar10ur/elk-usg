@@ -17,7 +17,7 @@ docker build -t elk-geoip ~/elk-usg/geoip/
 
 mkdir -p ~/go/src/github.com/elastic/
 
-git clone -b v6.2.1 https://github.com/elastic/beats.git ~/go/src/github.com/elastic/beats
+git clone -b v6.2.2 https://github.com/elastic/beats.git ~/go/src/github.com/elastic/beats
 pushd  ~/go/src/github.com/elastic/beats/filebeat
 GOOS=linux GOARCH=mips64 go build -o ~/elk-usg/filebeat/filebeat
 popd
@@ -40,8 +40,8 @@ scp -pr ~/elk-usg/ admin@192.168.1.1:
 ## Register metricbeat template and dashboard (change ELK_HOST to your hostname)
 ```bash
 ELK_HOST=snow.skynet
-docker run --link elk-usg:$ELK_HOST docker.elastic.co/beats/metricbeat:6.2.1 setup --template -E output.elasticsearch.hosts=["$ELK_HOST:9200"]
-docker run --link elk-usg:$ELK_HOST docker.elastic.co/beats/metricbeat:6.2.1 setup --dashboards -E output.elasticsearch.hosts=["$ELK_HOST:9200"] -E setup.kibana.host=$ELK_HOST:5601
+docker run --link elk-usg:$ELK_HOST docker.elastic.co/beats/metricbeat:6.2.2 setup --template -E output.elasticsearch.hosts=["$ELK_HOST:9200"]
+docker run --link elk-usg:$ELK_HOST docker.elastic.co/beats/metricbeat:6.2.2 setup --dashboards -E output.elasticsearch.hosts=["$ELK_HOST:9200"] -E setup.kibana.host=$ELK_HOST:5601
 ```
 
 ## SSH to USG
