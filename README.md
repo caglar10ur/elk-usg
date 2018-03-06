@@ -1,6 +1,6 @@
 # ELK USG
 
-On your Linux machine where you have docker and go.
+On your Linux machine where you have [docker](https://www.docker.com/) and [go](https://golang.org/).
 
 ## Clone the repository
 ```bash
