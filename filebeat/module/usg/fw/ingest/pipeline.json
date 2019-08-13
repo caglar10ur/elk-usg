@@ -7,11 +7,12 @@
                 "patterns": [
                     "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} TOS=%{WORD:usg.fw.tos} PREC=%{WORD:usg.fw.prec} TTL=%{INT:usg.fw.ttl} ID=%{INT:usg.fw.id} DF PROTO=%{WORD:usg.fw.proto} SPT=%{INT:usg.fw.src_port} DPT=%{INT:usg.fw.dest_port} WINDOW=%{INT:usg.fw.window} RES=%{WORD:usg.fw.res}",
                     "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} TOS=%{WORD:usg.fw.tos} PREC=%{WORD:usg.fw.prec} TTL=%{INT:usg.fw.ttl} ID=%{INT:usg.fw.id} PROTO=%{WORD:usg.fw.proto} SPT=%{INT:usg.fw.src_port} DPT=%{INT:usg.fw.dest_port} WINDOW=%{INT:usg.fw.window} RES=%{WORD:usg.fw.res}",
-                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} TOS=%{WORD:usg.fw.tos} PREC=%{WORD:usg.fw.prec} TTL=%{INT:usg.fw.ttl} ID=%{INT:usg.fw.id} DF PROTO=%{WORD:usg.fw.proto}",
+                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} TOS=%{WORD:usg.fw.tos} PREC=%{WORD:usg.fw.prec} TTL=%{INT:usg.fw.ttl} ID=%{INT:usg.fw.id} PROTO=%{WORD:usg.fw.proto} SPT=%{INT:usg.fw.src_port} DPT=%{INT:usg.fw.dest_port}",
                     "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} TOS=%{WORD:usg.fw.tos} PREC=%{WORD:usg.fw.prec} TTL=%{INT:usg.fw.ttl} ID=%{INT:usg.fw.id} PROTO=%{WORD:usg.fw.proto}",
-                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} .* FLOWLBL=%{INT:usg.fw.flow_label} PROTO=%{WORD:usg.fw.proto} SPT=%{INT:usg.fw.src_port} DPT=%{INT:usg.fw.dst_port}",
-                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} .* PROTO=%{WORD:usg.fw.proto} SPT=%{INT:usg.fw.src_port} DPT=%{INT:usg.fw.dst_port} LEN=%{INT:usg.fw.len}",
+                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} .* FLOWLBL=%{INT:usg.fw.flow_label} PROTO=%{WORD:usg.fw.proto} SPT=%{INT:usg.fw.src_port} DPT=%{INT:usg.fw.dest_port}",
+                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} .* PROTO=%{WORD:usg.fw.proto} SPT=%{INT:usg.fw.src_port} DPT=%{INT:usg.fw.dest_port}",
                     "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} .* PROTO=%{WORD:usg.fw.proto} TYPE=%{INT:usg.fw.type} CODE=%{INT:usg.fw.code}",
+                    "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: \\[%{GREEDYDATA:usg.fw.ruleset}\\]IN=%{DATA:usg.fw.in} OUT=%{DATA:usg.fw.out} MAC=%{GREEDYDATA:usg.fw.mac} SRC=%{IP:usg.fw.src_ip} DST=%{IP:usg.fw.dst_ip} LEN=%{INT:usg.fw.len} TOS=%{WORD:usg.fw.tos} PREC=%{WORD:usg.fw.prec} TTL=%{INT:usg.fw.ttl} ID=%{INT:usg.fw.id} DF PROTO=%{WORD:usg.fw.proto}",
                     "^%{SYSLOGTIMESTAMP:usg.fw.date} %{HOSTNAME:usg.fw.host} %{DATA:usg.fw.facility}: %{GREEDYDATA:usg.fw.other}"
                 ],
                 "ignore_missing": true
@@ -51,6 +52,15 @@
             "geoip": {
                 "field": "usg.fw.dst_ip",
                 "target_field": "usg.fw.dst_ip_geoip",
+                "ignore_failure": true
+            }
+        },
+        {
+            "gsub": {
+                "field": "usg.fw.ruleset",
+                "target_field": "usg.fw.action",
+                "pattern": ".*-([A-Z])",
+                "replacement": "$1",
                 "ignore_failure": true
             }
         }
