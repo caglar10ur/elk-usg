@@ -65,6 +65,9 @@
     - name: facility
       type: keyword
       description: '...'
+    - name: action
+      type: keyword
+      description: '...'
     - name: src_ip_geoip
       type: group
       description: >
